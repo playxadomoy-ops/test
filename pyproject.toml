@@ -1,0 +1,37 @@
+[project]
+name = "air-alert-analyzer"
+version = "1.0.0"
+description = "Центр моніторингу повітряних тривог України: карта, Telegram-аналіз, статистика."
+requires-python = ">=3.11"
+dependencies = [
+    "flet==0.28.3",
+    "telethon>=1.36,<2.0",
+    "httpx>=0.27",
+]
+
+[tool.flet]
+product = "Air Alert Analyzer"
+org = "com.airalertanalyzer"
+company = "Air Alert Analyzer"
+
+[tool.flet.app]
+path = "."
+module = "main"
+
+[tool.flet.android.permission]
+"android.permission.INTERNET" = true
+"android.permission.ACCESS_NETWORK_STATE" = true
+"android.permission.POST_NOTIFICATIONS" = true
+
+[tool.flet.splash]
+color = "#0A0E14"
+dark_color = "#0A0E14"
+
+[tool.flet.android]
+# Android-only: gives compass_sensor.py real access to
+# android.hardware.SensorManager for the Threat Compass's hardware
+# heading. Never installed for desktop/web builds -- see
+# app/services/compass_sensor.py's module docstring for why this is
+# safe to import unconditionally there (it isn't; that module guards
+# every import itself).
+dependencies = ["pyjnius"]
