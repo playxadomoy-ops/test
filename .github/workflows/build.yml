@@ -69,4 +69,3 @@ jobs:
           name: air-alert-analyzer-apk
           path: build/apk/**/*.apk
           if-no-files-found: error
-
